@@ -41,6 +41,7 @@ function clearTags(file){
 async function arrayTags(){
     const quotesFile = await getTags();
     const tags = Array.from(clearTags(quotesFile))
+    return tags
 }
 
 //Main function
