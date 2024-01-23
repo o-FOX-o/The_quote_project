@@ -1,26 +1,22 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
+const dataFunction = require('../JS/quotes.js')
 
-function sendData(){
-    return new Promise((resolve) =>{
-        let data = require('../JS/quotes')
-        console.log(data.tags,'done')
-        resolve(data.tags);
-    })
-    
-}
 
-router.get('/load_quote', async (req,res) =>{
+
+router.get('/load_quote',async (req,res) =>{
     try {
-    const tags = await sendData();
-    console.log(tags)
-    res.json({tags});
+    const data = await dataFunction('./data/quotes.json');
+    const response = JSON.stringify(data)
+    res.json(response);
     }catch (error){
         console.error(error);
         res.status(500).json({error: 'internal server error'})
     }
 })
+
+module.exports = router;  
     // fs.readFile('./data/quotes.json','utf-8',(err,data) =>{
     //     if(err){
     //         console.log(`Error: ${err}`);
@@ -43,4 +39,3 @@ router.get('/load_quote', async (req,res) =>{
 
 
 
-module.exports = router;

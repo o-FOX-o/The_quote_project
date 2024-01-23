@@ -1,60 +1,44 @@
 
 const fs = require('fs');
 
-//Quotes file ( ͡❛ ͜ʖ͡❛ )
+//Reading the Quote.js
 
-function getQuotesFile(){
-    return new Promise((resolve,reject) => {fs.readFile('../data/quotes.json','utf-8',(err,data) =>{
+function getQuotesFile(filePath){
+    return new Promise((resolve,reject) => {fs.readFile(filePath,'utf-8',(err,data) =>{
                 if(err){
                     reject(`Error: ${err}`);
                 }else {
-                    resolve(data)
-                }
+                    resolve(JSON.parse(data));                }
             })
         })
 }
 
 //Tags ("_")
 
-const getTags = () =>{
-    return new Promise((resolve,reject) => {
-        fs.readFile('../data/quotes.json', 'utf8', (err, data) =>{
-            if(err){
-                reject('Error reading the file!:'+err);
-            }else {
-                resolve(JSON.parse(data));
-            }
-        })
-    })
-}
-
-function clearTags(file){
+async function arrayTags(filePath){
+    const quotesFile = await getQuotesFile(filePath);
     let tags =new Set();
-    file.forEach(quotes => {
+    quotesFile.forEach(quotes => {
         quotes.tags.forEach(tag=> {
             tags.add(tag)
         })
-    })
-    return tags
-}
-
-async function arrayTags(){
-    const quotesFile = await getTags();
-    const tags = Array.from(clearTags(quotesFile))
-    return tags
+    }) 
+    
+    return Array.from(tags)
 }
 
 //Main function
 
-async function mainFun(){
+async function mainFun(filePath){
     return {
-        tags : await arrayTags(),
-        quotesFile : await getQuotesFile()
+        tags : await arrayTags(filePath),
+        quotesFile : await getQuotesFile(filePath)
     }
 }
 //Exports ==>>
 
-module.exports = mainFun();
+
+module.exports = mainFun;
 
 
                         // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
