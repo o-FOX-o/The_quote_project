@@ -27,12 +27,25 @@ async function arrayTags(filePath){
     return Array.from(tags)
 }
 
+//Authors (*/*)
+
+async function arrayAuthors(filePath){
+    const quotesFile = await getQuotesFile(filePath);
+    let authors =new Set();
+    quotesFile.forEach(quotes => {
+        authors.add(quotes.author)
+    }) 
+    
+    return Array.from(authors)
+}
+
 //Main function
 
 async function mainFun(filePath){
     return {
         tags : await arrayTags(filePath),
-        quotesFile : await getQuotesFile(filePath)
+        quotesFile : await getQuotesFile(filePath),
+        authors : await arrayAuthors(filePath)
     }
 }
 //Exports ==>>

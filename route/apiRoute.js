@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
-const dataFunction = require('../JS/quotes.js')
+const dataFunction = require('../JS/data.js')
 
 
 

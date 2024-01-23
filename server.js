@@ -4,8 +4,27 @@ const apiRouter = require('./route/apiRoute')
 const fs = require('fs');
 const app = express();
 
+// async function getWebFiles(filePath){
+//     fs.readFile(filePath,'utf-8',(err,data) => {
+//         if(!err){
+//             return data
+//         }else {
+//             console.log(err)
+//         }
+//     })
+// }
+
 app.use(express.json());
 app.use(express.urlencoded( { extended: true} ));
+const path = require('path')
+
+
+// app.get('/',async (req,res) =>{
+//     let html = await getWebFiles('./HTML/index.html');
+//     let webFiles = await getWebFiles('./HTMl')
+// })
+
+app.use(express.static(path.join(__dirname,'public')))
 
 app.get('/',(req,res) =>{
     fs.readFile('./HTML/index.html','utf-8',(err,data) => {
