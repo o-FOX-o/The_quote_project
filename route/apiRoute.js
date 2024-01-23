@@ -1,9 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const router = express.Router();
-const dataFunction = require('../JS/data.js')
-
-
+const dataFunction = require('../JS/data.js');
 
 router.get('/load_quote',async (req,res) =>{
     try {
@@ -17,14 +15,7 @@ router.get('/load_quote',async (req,res) =>{
 })
 
 module.exports = router;  
-    // fs.readFile('./data/quotes.json','utf-8',(err,data) =>{
-    //     if(err){
-    //         console.log(`Error: ${err}`);
-    //     }else {
-    //         res.send(data)
-    //         console.log(data)
-    //     }
-    // })
+
 
 
 

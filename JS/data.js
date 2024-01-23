@@ -50,7 +50,6 @@ async function mainFun(filePath){
 }
 //Exports ==>>
 
-
 module.exports = mainFun;
 
 
