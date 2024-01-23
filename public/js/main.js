@@ -14,5 +14,5 @@ function displayTags(){
 }
 
 function displayQuotes(){
-    console.log(object.quotesFile)
+    console.log('hello world')
 }
