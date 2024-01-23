@@ -10,14 +10,24 @@
     <div class="main-div">
     </div>
     <button onclick="getTags()">Get quotes</button>
+    <button onclick="displayTags()">tags</button>
+    <button onclick="displayQuotes()">quotes</button>
     <script>
+        let object = '';
     function getTags(){
     fetch('/api/load_quote')
     .then(response => response.json())
     .then((data) =>{
-        console.log(data)
-    })
-}
+        object = JSON.parse(data);
+        console.log(object)
+        })
+    } 
+    function displayTags(){
+        console.log(object.tags)
+    }
+    function displayQuotes(){
+        console.log(object.quotesFile)
+    }
     </script>
 </body>
 </html>
