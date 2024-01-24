@@ -4,16 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto+Mono:wght@200&family=Rubik+Maps&family=Yuji+Hentaigana+Akari&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="http://localhost:3000/css/general.css">
     <script src="http://localhost:3000/js/load_data.js"></script>
 </head>
 <body>
-    <h1>test</h1>
-    <div class="main-div">
-    </div>
-    <button onclick="getTags()">Get quotes</button>
-    <button onclick="displayTags()">tags</button>
-    <button onclick="displayQuotes()">quotes</button>
+
+    <header>    
+        
+        <h1>Quotidian</h1>
+
+    </header>
+
+    <main>
+        
+        <div class="js-quote-div quote-div">
+
+            <p>Author</p>
+
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat aliquam doloribus, voluptatem aut dolores rerum reiciendis.</p>
+
+            <div class="js-quote-tags quote-tags">
+
+                <p>tags</p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <aside class="js-aside">
+
+        <button onclick="asideCon()" class="js-aside-button">&#60;=&#62;</button>
+
+    </aside>
+
+    
+
+    <footer>
+
+    </footer>
     <script src="http://localhost:3000/js/main.js"></script>
 </body>
 </html>
