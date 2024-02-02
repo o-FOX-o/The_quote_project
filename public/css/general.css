@@ -12,8 +12,8 @@ body {
   background-repeat: no-repeat;
   justify-content: center;
   justify-self: center;
-  /* overflow: hidden;
-    position: fixed; */
+  overflow: auto;
+  background-attachment: fixed;
 }
 
 header {
@@ -53,6 +53,10 @@ main {
   height: fit-content;
   margin-top: 2rem;
   min-width: 300px;
+  overflow: auto;
+  position: relative;
+  display: grid;
+  row-gap: 20px;
 }
 
 aside {
@@ -85,57 +89,3 @@ footer {
   background-color: black;
 }
 
-.quote-div {
-  background-color: hsla(0, 0%, 100%, 0.541);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: space-around;
-  width: 65vw;
-  margin: auto;
-  border: solid hsl(0, 92%, 10%) 0.3rem;
-  border-radius: 6px;
-  min-width: 300px;
-  backdrop-filter: blur(4px);
-}
-
-.quote-div > * {
-  width: 90%;
-  font-size: clamp(14px, 2vw, 24px);
-  margin: 10px;
-}
-
-.author-p {
-  margin-top: 20px;
-  color: goldenrod;
-  -webkit-text-stroke: 1px black;
-}
-
-.quote-p {
-  font-family: "Sevillana", cursive;
-  font-weight: 570;
-}
-
-.tags-p {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  font-weight: bold;
-}
-
-.quote-tags-div {
-  display: inline-block;
-}
-
-.tag-button {
-  background-color: rgb(25, 51, 25);
-  color: rgb(150, 131, 97);
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.author-name {
-  font-weight: 300;
-  color: rgb(66, 27, 0);
-  -webkit-text-stroke: 0;
-}

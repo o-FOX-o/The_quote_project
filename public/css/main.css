@@ -1,0 +1,58 @@
+.quote-div {
+    background-color: hsla(0, 0%, 100%, 0.541);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    width: 65vw;
+    margin: auto;
+    border: solid hsl(0, 92%, 10%) 0.3rem;
+    border-radius: 6px;
+    min-width: 300px;
+    backdrop-filter: blur(4px);
+  }
+  
+  .quote-div > * {
+    width: 90%;
+    font-size: clamp(14px, 2vw, 24px);
+    margin: 10px;
+  }
+  
+  .author-p {
+    margin-top: 20px;
+    color: goldenrod;
+    -webkit-text-stroke: 1px black;
+  }
+  
+  .quote-p {
+    font-family: "Sevillana", cursive;
+    font-weight: 570;
+  }
+  
+  .tags-p {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-weight: bold;
+  }
+  
+  .quote-tags-div {
+    display: inline-block;
+    display: grid;
+    column-gap: 5px;
+  }
+  
+  .tag-button {
+    background-color: rgb(25, 51, 25);
+    color: rgb(150, 131, 97);
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  .author-name {
+    font-weight: 300;
+    color: rgb(66, 27, 0);
+    -webkit-text-stroke: 0;
+  }
+  

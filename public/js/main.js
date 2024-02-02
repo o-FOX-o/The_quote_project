@@ -25,7 +25,34 @@ asideButton.addEventListener("click", () => {
 
 //Rendering quotes
 async function renderQuote() {
-  data = await fetchData();
-  console.log(JSON.parse(data));
+  jsonData = await fetchData();
+  data = JSON.parse(jsonData);
+  const {quotesFile} = data;
+  let html = "";
+  quotesFile.forEach(element => {
+    const tags = element.tags;
+    const quote = element.quote;
+    const author = element.author;
+    let  tagHtml = ``;
+    tags.forEach((tag) =>{
+      tagHtml += `<span class="js-tag-button tag-button">${tag}</span>`;
+    })
+    html += `
+            <div class="js-quote-div quote-div">
+
+                <p class="js-author-p author-p">Author:<span class="js-author-name author-name">${author}</span></p>
+
+                <p class="js-quote-p quote-p">${quote}</p>
+
+                <div class="js-quote-tags quote-tags">
+
+                    <p class="js-tags-p tags-p">tags: <div class="js-quote-tags-div quote-tags-div">${tagHtml}</div></p>
+
+                </div>
+
+             </div>
+             `
+  });
+  document.querySelector("main").innerHTML = html;
 }
 renderQuote();
