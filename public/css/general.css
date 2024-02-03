@@ -12,7 +12,8 @@ body {
   background-repeat: no-repeat;
   justify-content: center;
   justify-self: center;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-attachment: fixed;
 }
 
@@ -53,9 +54,9 @@ main {
   height: fit-content;
   margin-top: 2rem;
   min-width: 300px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y:auto;
   position: relative;
-  display: grid;
   row-gap: 20px;
 }
 
