@@ -23,9 +23,41 @@ asideButton.addEventListener("click", () => {
   asideCon();
 });
 
+//Get tags 
+
+async function getTags(){
+  jsonData = await fetchData();
+  data = JSON.parse(jsonData);
+  console.log(data)
+  return data.tags;
+}
+
+//Rendering aside tags
+
+async function renderAsideTags(){
+  const tags = await getTags();
+  let tagsHtml = '';
+  const asideTagsContainer = document.querySelector('.js-aside-tags-container-div')
+  tags.forEach((tag) => {
+    tagsHtml += `<button data-tag-name="${tag}" class="js-tag-button aside-tag-button">${tag}</button>` ;
+  })
+  asideTagsContainer.innerHTML = tagsHtml;
+  tagsOnclick();
+}
+
+//Get quotes
+
+async function getQuotes(){
+  jsonData = await fetchData();
+  data = JSON.parse(jsonData);
+  return data.quotesFile
+}
+
 //Rendering quotes
 
 const page = {start: 0,end: 10};
+
+let allPagesQuotes = [];
 
 function renderHtml(html){
   const quotesContainer = document.querySelector(".js-quotes-container");
@@ -35,27 +67,20 @@ function renderHtml(html){
     temperHtml += element;
   })
   quotesContainer.innerHTML = temperHtml;
-  console.log(pageHtml)
+
 }
 
-
-async function getQuotes(){
-  jsonData = await fetchData();
-  data = JSON.parse(jsonData);
-  console.log(data.quotesFile)
-  return data.quotesFile
-}
-
-async function renderQuote() {
-  const quotesFile = await getQuotes();
+async function renderQuote(data = getQuotes()) {
   const html = [];
-  quotesFile.forEach(element => {
+  const dataArray = await data;
+  allPagesQuotes = dataArray;
+  dataArray.forEach(element => {
     const tags = element.tags;
     const quote = element.quote;
     const author = element.author;
     let  tagHtml = ``;
     tags.forEach((tag) =>{
-      tagHtml += `<span class="js-tag-button tag-button">${tag}</span>`;
+      tagHtml += `<span data-tag-name="${tag}" class="js-tag-button tag-button">${tag}</span>`;
     })
     html.push(`
             <div class="js-quote-div quote-div">
@@ -74,25 +99,61 @@ async function renderQuote() {
              `)
   });
   renderHtml(html);
+  // tagsOnclick();
+  nextButtonAddEvent();
+  previewsButtonAddEvent();
 }
-renderQuote();
+
 
 const nextButton = document.querySelector(".js-next-button");
 const previewsButton = document.querySelector(".js-previews-button");
 
-nextButton.addEventListener("click",async () => {
-  quotesFile = await getQuotes()
-  if(page.end < quotesFile.length){
-  page.start += 10;
-  page.end += 10;
-  renderQuote();
-  }
-})
+//Page control
+function nextButtonAddEvent(){
+  nextButton.addEventListener("click",async () => {
+    if(page.end < allPagesQuotes.length){
+    page.start += 10;
+    page.end += 10;
+    renderQuote(allPagesQuotes);
+    }
+  })
+}
 
-previewsButton.addEventListener('click', () => {
-  if (page.start > 0){
-  page.start -= 10;
-  page.end -= 10;
-  renderQuote();
-  }
-})
+function previewsButtonAddEvent(){
+  previewsButton.addEventListener('click', () => {
+    if (page.start > 0){
+    page.start -= 10;
+    page.end -= 10;
+    renderQuote(allPagesQuotes);
+    }
+  })
+}
+//Add eventlistener to tags
+async function tagsOnclick(){
+  const tagButton = await document.querySelectorAll(".js-tag-button")
+    tagButton.forEach(async (element) =>{
+      const buttons = await element;
+      buttons.addEventListener('click', async (event) => {
+        const button = await event.target;
+        console.log(button);
+        const quotesFile = await getQuotes()
+        const tag = button.getAttribute('data-tag-name')
+        const filterQuotes = [];
+        quotesFile.forEach((quote) => {
+          const quoteTags = quote.tags;
+          if(quoteTags.includes(tag)){
+            filterQuotes.push(quote)
+          }
+        });
+        renderQuote(filterQuotes);
+        allPagesQuotes = filterQuotes;
+    })
+  })
+}
+
+async function  mainFun(){
+  await renderQuote();
+  await renderAsideTags();
+}
+
+mainFun()
