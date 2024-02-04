@@ -115,6 +115,7 @@ function nextButtonAddEvent(){
     page.start += 10;
     page.end += 10;
     renderQuote(allPagesQuotes);
+    tagsOnclick();
     }
   })
 }
@@ -125,6 +126,7 @@ function previewsButtonAddEvent(){
     page.start -= 10;
     page.end -= 10;
     renderQuote(allPagesQuotes);
+    tagsOnclick();
     }
   })
 }
@@ -147,6 +149,7 @@ async function tagsOnclick(){
         });
         renderQuote(filterQuotes);
         allPagesQuotes = filterQuotes;
+        tagsOnclick();
     })
   })
 }
