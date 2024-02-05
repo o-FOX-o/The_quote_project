@@ -156,7 +156,7 @@ async function tagsOnclick() {
 
 //header add event addEventListener
 
-async function headAddevent() {
+async function headAddEvent() {
   const header = await document.querySelector("header");
   header.addEventListener("click", async (event) => {
     mainFun();
@@ -167,7 +167,7 @@ async function headAddevent() {
 async function mainFun() {
   await renderQuote();
   await renderAsideTags();
-  headAddevent();
+  headAddEvent();
 }
 
 mainFun();
