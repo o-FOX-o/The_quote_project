@@ -147,6 +147,8 @@ async function tagsOnclick() {
           filterQuotes.push(quote);
         }
       });
+      page.start = 0;
+      page.end = 10;
       await renderQuote(filterQuotes);
       tagsOnclick();
       allPagesQuotes = filterQuotes;
@@ -154,9 +156,21 @@ async function tagsOnclick() {
   });
 }
 
+//h1 add event listener
+
+async function h1Onclick() {
+  const h1 = await document.querySelector(".js-h1");
+  h1.addEventListener("click", async () => {
+    mainFun();
+    page.start = 0;
+    page.end = 10;
+  });
+}
+
 async function mainFun() {
   await renderQuote();
   await renderAsideTags();
+  h1Onclick();
 }
 
 mainFun();
