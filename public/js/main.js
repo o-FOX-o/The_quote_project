@@ -147,7 +147,7 @@ async function tagsOnclick() {
           filterQuotes.push(quote);
         }
       });
-      renderQuote(filterQuotes);
+      await renderQuote(filterQuotes);
       allPagesQuotes = filterQuotes;
       tagsOnclick();
     });
@@ -167,7 +167,7 @@ async function headAddEvent() {
 async function mainFun() {
   await renderQuote();
   await renderAsideTags();
-  headAddEvent();
+  await headAddEvent();
 }
 
 mainFun();

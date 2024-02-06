@@ -34,6 +34,7 @@ header {
   justify-content: center;
   z-index: 20;
   min-width: fit-content;
+  cursor: pointer;
 }
 
 h1 {
