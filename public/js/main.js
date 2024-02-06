@@ -1,7 +1,9 @@
+const api = "localhost"
+
 //Fetch data
 function fetchData() {
   return new Promise((resolve, reject) => {
-    fetch("http://localhost:3000/api/load_quote").then((response) => {
+    fetch(`http://${api}:3000/api/load_quote`).then((response) => {
       resolve(response.json());
     });
   });
