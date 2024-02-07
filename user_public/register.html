@@ -23,21 +23,19 @@
 
     <main>
 
-        <form id="register-form">
-
-            <h2>register</h2>
+        <form action="/api/register" method="POST">
 
             <div class="js-user-name-div user-name-div">
             <label for="">User Name :</label>
-            <input autocomplete="username" id="user_name" name="username" type="text" required>
+            <input id="user_name" name="username" type="text" required>
             </div>
 
             <div class="js-user-password-div user-password-div">
             <label for="pass_word" class="js-pass-word-label pass-word-label">Password :</label>
-            <input autocomplete="current-password" type="password" id="pass_word" name="password" required>
+            <input type="password" id="pass_word" name="username" required>
             </div>
 
-            <button type="submit">Submit</button>
+            <input type="submit" value="Submit">
 
         </form>
 

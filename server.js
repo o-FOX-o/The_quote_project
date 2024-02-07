@@ -1,12 +1,13 @@
 const express = require("express");
 const port = process.env.PORT || 3000;
-const apiRouter = require("./route/apiRoute");
 const fs = require("fs");
 const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 const path = require("path");
+app.use(express.json());
+const apiRouter = require("./route/apiRoute");
+
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use(express.static(path.join(__dirname, "public")));
 

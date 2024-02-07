@@ -8,7 +8,7 @@ registerForm.addEventListener( 'submit', async (event) => {
     const formData = new FormData(registerForm);
     const objectFormData = Object.fromEntries(formData);
     console.log(objectFormData);
-    const response = await fetch('/api/register', {
+    const response = await fetch('/api/login', {
         method: 'POST',
         body: JSON.stringify(objectFormData),
         headers: {
